@@ -1,0 +1,232 @@
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: #120409;
+        overscroll-behavior-y: none;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      }
+
+      #wallpaper {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(90% 55% at 50% 82%, rgba(120, 18, 40, 0.48) 0%, rgba(18, 5, 10, 0.15) 52%, rgba(0, 0, 0, 0) 100%),
+          linear-gradient(180deg, #220710 0%, #120409 42%, #040404 100%);
+      }
+
+      #app {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      #cinematic-veil {
+        
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 2;
+        background:
+          radial-gradient(75% 55% at 50% 50%, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.48) 100%),
+          linear-gradient(180deg, rgba(25, 0, 8, 0.22) 0%, rgba(0, 0, 0, 0.34) 100%);
+        opacity: 0.9;
+      }
+
+      #scroll-track {
+        height: 520vh;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      #reveal-copy {
+        position: fixed;
+        top: 50%;
+        right: clamp(16px, 6vw, 96px);
+        transform: translate3d(0, -50%, 0);
+        width: min(40vw, 520px);
+        z-index: 10;
+        color: rgba(255, 239, 243, 0.96);
+        pointer-events: none;
+        opacity: 0;
+        filter: blur(8px);
+        text-shadow: 0 6px 24px rgba(8, 2, 4, 0.55);
+      }
+
+      #reveal-copy h2 {
+        margin: 0 0 12px;
+        font: 500 clamp(32px, 4.2vw, 56px) / 1.02 "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+        letter-spacing: 0.01em;
+        text-wrap: balance;
+      }
+
+      #reveal-copy p {
+        margin: 0;
+        max-width: 36ch;
+        color: rgba(255, 226, 234, 0.86);
+        font: 400 clamp(15px, 1.3vw, 20px) / 1.55 "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      #reveal-copy .line {
+        display: block;
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+        filter: blur(4px);
+      }
+
+      #logo-intro {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      #logo-intro img {
+        width: min(42vw, 560px);
+        max-width: 78vw;
+        height: auto;
+        opacity: 0;
+        transform: translate3d(0, 10px, 0) scale(0.93);
+        filter: blur(5px) drop-shadow(0 16px 34px rgba(0, 0, 0, 0.42));
+        will-change: opacity, transform, filter;
+      }
+
+      #end-assets {
+        position: fixed;
+        right: clamp(122px, 16vw, 248px);
+        top: 43%;
+        transform: translate3d(0, -50%, 0);
+        z-index: 55;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        pointer-events: none;
+      }
+
+      #end-assets img {
+        width: clamp(250px, 29vw, 410px);
+        height: clamp(250px, 29vw, 410px);
+        object-fit: contain;
+        opacity: 0;
+        filter: blur(8px);
+        transform: translate3d(0, 14px, 0) scale(0.97);
+        will-change: opacity, transform, filter;
+      }
+
+      #end-qr-image {
+        margin-top: clamp(-190px, -18vw, -110px);
+      }
+
+      @media (max-width: 900px) {
+        #scroll-track {
+          height: 420vh;
+        }
+
+        #logo-intro img {
+          width: min(68vw, 420px);
+          max-width: 84vw;
+        }
+
+        #reveal-copy {
+          right: max(14px, env(safe-area-inset-right));
+          top: auto;
+          bottom: max(10vh, calc(env(safe-area-inset-bottom) + 20px));
+          width: min(86vw, 420px);
+          transform: translate3d(0, 0, 0);
+        }
+
+        #reveal-copy h2 {
+          font: 500 clamp(24px, 8.2vw, 36px) / 1.06 "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+        }
+
+        #reveal-copy p {
+          font: 400 clamp(13px, 3.6vw, 17px) / 1.5 "Avenir Next", "Segoe UI", sans-serif;
+        }
+
+        #end-assets {
+          left: 50%;
+          right: auto;
+          top: 50%;
+          bottom: auto;
+          transform: translate3d(-50%, -50%, 0);
+          gap: 0;
+        }
+
+        #end-assets img {
+          width: clamp(250px, 62vw, 380px);
+          height: clamp(250px, 62vw, 380px);
+        }
+
+        #end-qr-image {
+          margin-top: clamp(-210px, -30vw, -130px);
+        }
+      }
+
+      @media (max-width: 600px) {
+        #scroll-track {
+          height: 360vh;
+        }
+
+        #reveal-copy {
+          right: max(10px, env(safe-area-inset-right));
+          width: min(90vw, 360px);
+        }
+
+        #reveal-copy h2 {
+          margin-bottom: 8px;
+          font: 500 clamp(21px, 7.4vw, 30px) / 1.08 "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+        }
+
+        #reveal-copy p {
+          font: 400 clamp(12px, 3.4vw, 15px) / 1.45 "Avenir Next", "Segoe UI", sans-serif;
+        }
+
+        #end-assets {
+          left: 50%;
+          right: auto;
+          top: 50%;
+          bottom: auto;
+          transform: translate3d(-50%, -50%, 0);
+        }
+
+        #end-assets img {
+          width: clamp(230px, 70vw, 340px);
+          height: clamp(230px, 70vw, 340px);
+        }
+
+        #end-qr-image {
+          margin-top: clamp(-190px, -34vw, -120px);
+        }
+      }
+
+      @media (max-height: 740px) and (max-width: 900px) {
+        #reveal-copy {
+          bottom: max(8vh, calc(env(safe-area-inset-bottom) + 12px));
+        }
+
+        #end-assets {
+          top: 50%;
+          bottom: auto;
+        }
+      }
+
